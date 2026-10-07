@@ -93,7 +93,8 @@ async function fetchLeads(c, since) {
 export function toWebhookPayload(lead, companyName = '') {
   const cd = lead.contactDetails ?? {};
   const full = (cd.consumerName ?? '').trim();
-  const [firstName = '', ...rest] = full.split(/\s+/).filter(Boolean);
+  // Phone-call leads usually arrive with no name or email; fall back to Google's own label.
+  const [firstName = 'Potential', ...rest] = (full || 'Potential Customer').split(/\s+/).filter(Boolean);
   const notes = [
     lead.note?.description,
     `Lead type: ${lead.leadType ?? ''}`,

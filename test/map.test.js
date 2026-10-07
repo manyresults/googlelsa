@@ -26,7 +26,8 @@ test('maps a lead to the webhook schema', () => {
 test('handles missing contact details', () => {
   const p = toWebhookPayload({ id: '1' });
   assert.equal(p.phone, '');
-  assert.equal(p.firstName, '');
+  assert.equal(p.firstName, 'Potential');
+  assert.equal(p.lastName, 'Customer');
 });
 
 test('query filters by creation time', () => {

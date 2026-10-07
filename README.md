@@ -15,7 +15,7 @@ Requires Node 18+, no dependencies. Auth uses an OAuth refresh token + Google Ad
   "companyName": "", "address": "", "city": "", "state": "", "postalCode": "", "notes": "" }
 ```
 - The Local Services Ads API only exposes consumer name, phone and email (plus lead type/status, category, service, message). `address`, `city`, `state`, `postalCode` are always sent empty. Lead details go into `notes`.
-- The consumer name is split on whitespace into first/last. `companyName` comes from `COMPANY_NAME`.
+- Phone-call leads typically have no name or email, only a phone number. When the name is missing it defaults to "Potential Customer" (Google's own label). Otherwise the name is split into first/last.
 
 ## De-duplication
 Posted lead IDs are saved in `STATE_FILE` before moving on. Each poll queries the last `LOOKBACK_HOURS` (48) and skips IDs already sent. Failed POSTs (3 tries with backoff) are retried on the next poll.
