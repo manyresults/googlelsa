@@ -1,0 +1,13 @@
+{
+  "name": "googlelsa",
+  "version": "1.0.0",
+  "description": "Polls Google Ads Local Services Ads leads and POSTs them to a webhook",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "once": "node src/index.js --once",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" }
+}
